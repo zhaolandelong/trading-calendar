@@ -3,7 +3,6 @@ import { Calendar, Tag, Typography, Row, Col, Card, Checkbox } from "antd";
 import { CheckCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import tradingData from "../trading_days.json";
-import "./Home.css";
 
 const { Title, Text } = Typography;
 
@@ -38,7 +37,16 @@ const StockTradingCalendar = () => {
     const dateData = dummyData[dateString] || {};
 
     return (
-      <ul className="date-cell-render">
+      <ul
+        style={{
+          listStyle: "none",
+          padding: 0,
+          margin: 0,
+          textAlign: "center",
+          verticalAlign: "top",
+          minHeight: "80px",
+        }}
+      >
         {Object.entries(dateData).map(([market, status]) => {
           if (selectedMarkets.includes(market)) {
             return (
@@ -66,9 +74,32 @@ const StockTradingCalendar = () => {
   };
 
   return (
-    <div className="calendar-container">
-      <Card className="calendar-card">
-        <Title level={1} className="calendar-title">
+    <div
+      style={{
+        background: "linear-gradient(135deg, #1a237e 0%, #0d47a1 100%)",
+        minHeight: "100vh",
+        padding: "40px 20px",
+        boxSizing: "border-box",
+      }}
+    >
+      <Card
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          boxShadow:
+            "0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)",
+          borderRadius: "15px",
+          background: "rgba(255, 255, 255, 0.9)",
+        }}
+      >
+        <Title
+          level={1}
+          style={{
+            color: "#0d47a1",
+            textAlign: "center",
+            marginBottom: "30px",
+          }}
+        >
           Global Stock Market Trading Calendar
         </Title>
         <Row gutter={0}>
@@ -98,7 +129,12 @@ const StockTradingCalendar = () => {
         <Calendar
           cellRender={dateCellRender}
           fullscreen={false}
-          className="calendar"
+          style={{
+            marginTop: "20px",
+            background: "white",
+            borderRadius: "10px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          }}
           validRange={[dayjs(firstDay), dayjs(lastDay).add(1, "day")]}
           // headerRender={({ value, type, onChange, onTypeChange }) => {
           //   const current = value.clone();
