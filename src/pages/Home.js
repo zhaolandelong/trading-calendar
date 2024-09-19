@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Calendar, Tag, Typography, Row, Col, Card, Checkbox } from "antd";
+import { Calendar, Tag, Checkbox, Layout, Menu, Anchor } from "antd";
 import { CheckCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import tradingData from "../trading_days.json";
 import "./Home.css";
 
-const { Title, Text } = Typography;
+const { Header, Content, Footer, Sider } = Layout;
+const { Link } = Anchor;
 
 // const marketKeys = ["HK", "US", "CN", "NT", "ST", "JP_FUTURE", "SG_FUTURE"]
 const markets = {
@@ -66,65 +67,58 @@ const StockTradingCalendar = () => {
   };
 
   return (
-    <div className="calendar-container">
-      <Card className="calendar-card">
-        <Title
-          level={1}
-          style={{
-            textAlign: "center",
-            marginTop: 4,
-          }}
-        >
-          Global Stock Market Trading Calendar
-        </Title>
-        <Row gutter={0}>
-          <Col span={12}>
-            <Checkbox.Group
-              options={Object.keys(markets).map((market) => ({
-                label: (
-                  <div>
-                    <Tag color={markets[market].color}>{market}</Tag>
-                    <Text strong>{markets[market].name}</Text>
-                  </div>
-                ),
-                value: market,
-              }))}
-              value={selectedMarkets}
-              onChange={setSelectedMarkets}
+    <Layout className="layout-container">
+      <Header className="header">
+        <img src="logo-white.png" alt="logo" className="header-logo" />
+        <h1 className="header-title">Global Stock Market Trading Calendar</h1>
+      </Header>
+      <Content>
+        <Layout>
+          <Sider width={110}>
+            <Menu
+              theme="dark"
+              defaultSelectedKeys={["calendar"]}
+              mode="inline"
+              items={[
+                {
+                  key: "calendar",
+                  label: <Link href="#calendar">Calendar</Link>,
+                },
+                { key: "api", label: <Link href="#api">API</Link> },
+              ]}
             />
-          </Col>
-          <Col span={12} className="checkbox-group">
-            {/* {Object.entries(statusIcons).map(([status, icon]) => (
-              <Tag key={status} icon={icon}>
-                {status}
-              </Tag>
-            ))} */}
-          </Col>
-        </Row>
-        <Calendar
-          cellRender={dateCellRender}
-          fullscreen={false}
-          className="calendar"
-          validRange={[dayjs(firstDay), dayjs(lastDay).add(1, "day")]}
-          // headerRender={({ value, type, onChange, onTypeChange }) => {
-          //   const current = value.clone();
-          //   return (
-          //     <div
-          //       style={{
-          //         padding: "12px 0",
-          //         textAlign: "center",
-          //         fontSize: "18px",
-          //         fontWeight: "bold",
-          //         color: "#0d47a1",
-          //       }}
-          //     >
-          //       {current.format("MMMM YYYY")}
-          //     </div>
-          //   );
-          // }}
-        />
-      </Card>
-    </div>
+          </Sider>
+          <Content className="main-content">
+            <div className="calendar-container">
+              <h2 id="calendar">Calendar</h2>
+              <div className="checkbox-group">
+                <Checkbox.Group
+                  options={Object.keys(markets).map((market) => ({
+                    label: (
+                      <span>
+                        <Tag color={markets[market].color}>{market}</Tag>
+                        <span>{markets[market].name}</span>
+                      </span>
+                    ),
+                    value: market,
+                  }))}
+                  value={selectedMarkets}
+                  onChange={setSelectedMarkets}
+                />
+              </div>
+              <Calendar
+                cellRender={dateCellRender}
+                fullscreen={false}
+                className="calendar"
+                validRange={[dayjs(firstDay), dayjs(lastDay).add(1, "day")]}
+              />
+              <h2 id="api">API</h2>
+              <p>Comming soon...</p>
+            </div>
+          </Content>
+        </Layout>
+      </Content>
+    </Layout>
   );
 };
 

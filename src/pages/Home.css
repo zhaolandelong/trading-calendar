@@ -1,34 +1,115 @@
-.calendar-container {
-  background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+:root {
+  --primary-dark: #1a2a3a;
+  --primary-light: #f0f4f8;
+  --secondary-dark: #2c3e50;
+  --accent: #3498db;
+  --text-dark: #333333;
+  --text-light: #ffffff;
+  --border-color: rgba(5, 5, 5, 0.06);
+}
+
+body {
+  background-color: var(--primary-light);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-dark);
+}
+
+.layout-container {
   min-height: 100vh;
-  padding: 40px 20px;
+}
+
+.header {
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-dark);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-logo {
+  height: 40px;
+  margin-right: 16px;
+}
+
+.header-title {
+  color: var(--text-light);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.main-content {
+  margin: 24px auto;
+  background: var(--text-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+}
+
+.calendar-container {
+  padding: 8px 24px;
   box-sizing: border-box;
 }
 
-.calendar-card {
-  max-width: 900px;
-  margin: 0 auto;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.9);
-}
-
 .checkbox-group {
-  text-align: right;
+  margin-bottom: 16px;
 }
 
 .calendar {
-  margin-top: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--text-light);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.ant-picker-calendar-header {
+  color: var(--text-light);
+  padding: 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.ant-picker-body {
+  background: #fafafa;
+}
+
+.ant-picker-calendar-header button {
+  color: var(--text-light);
+}
+
+.ant-picker-cell {
+  border-top: 1px solid var(--border-color);
 }
 
 .date-cell-render {
   list-style: none;
-  padding: 0;
+  padding: 4px;
   margin: 0;
-  text-align: center;
-  vertical-align: top;
-  min-height: 80px;
+  text-align: left;
+}
+
+.ant-picker-calendar-date-content {
+  overflow: hidden;
+}
+
+.ant-layout-sider {
+  background: var(--secondary-dark);
+}
+
+.ant-menu-dark {
+  background: var(--secondary-dark);
+  position: sticky;
+  top: 0;
+}
+
+.ant-menu-item-selected {
+  background-color: var(--accent) !important;
+}
+
+.ant-checkbox-wrapper {
+  margin-right: 16px;
+}
+
+.ant-checkbox-wrapper span {
+  color: var(--text-dark);
 }
