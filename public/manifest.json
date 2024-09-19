@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Trading Calendar",
+  "name": "Global Stock Market Trading Calendar",
   "icons": [
     {
       "src": "favicon.ico",

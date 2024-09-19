@@ -68,7 +68,13 @@ const StockTradingCalendar = () => {
   return (
     <div className="calendar-container">
       <Card className="calendar-card">
-        <Title level={1} className="calendar-title">
+        <Title
+          level={1}
+          style={{
+            textAlign: "center",
+            marginTop: 4,
+          }}
+        >
           Global Stock Market Trading Calendar
         </Title>
         <Row gutter={0}>
