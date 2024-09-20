@@ -1,11 +1,21 @@
 import React, { useState } from "react";
-import { Calendar, Tag, Checkbox, Layout, Menu, Anchor } from "antd";
+import {
+  Calendar,
+  Tag,
+  Checkbox,
+  Layout,
+  Menu,
+  Anchor,
+  Typography,
+} from "antd";
 import { CheckCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import tradingData from "../trading_days.json";
 import "./Home.css";
+import ApiDocs from "./ApiDocs";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Title } = Typography;
+const { Header, Content, Sider } = Layout;
 const { Link } = Anchor;
 
 // const marketKeys = ["HK", "US", "CN", "NT", "ST", "JP_FUTURE", "SG_FUTURE"]
@@ -90,7 +100,9 @@ const StockTradingCalendar = () => {
           </Sider>
           <Content className="main-content">
             <div className="calendar-container">
-              <h2 id="calendar">Calendar</h2>
+              <Title id="calendar" level={2}>
+                Trading Days Calendar
+              </Title>
               <div className="checkbox-group">
                 <Checkbox.Group
                   options={Object.keys(markets).map((market) => ({
@@ -112,8 +124,10 @@ const StockTradingCalendar = () => {
                 className="calendar"
                 validRange={[dayjs(firstDay), dayjs(lastDay).add(1, "day")]}
               />
-              <h2 id="api">API</h2>
-              <p>Comming soon...</p>
+              <Title id="api" level={2}>
+                Trading Days API
+              </Title>
+              <ApiDocs />
             </div>
           </Content>
         </Layout>
