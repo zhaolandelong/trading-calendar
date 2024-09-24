@@ -99,6 +99,10 @@ const ApiDocs = () => {
               <Text strong>3:</Text> Afternoon trading only
             </li>
           </ul>
+          <li>
+            The data range is from <Text code>2015-01-01</Text> to <Text code>the last
+            day of the current year</Text>.
+          </li>
         </ul>
       </Card>
     </div>
