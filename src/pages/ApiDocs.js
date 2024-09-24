@@ -41,7 +41,7 @@ const ApiDocs = () => {
         <Title level={3}>Endpoint</Title>
         <Paragraph>
           <Text strong>URL:</Text>{" "}
-          <Text code>http://api.tradingdays.zldlwq.top/v1</Text>
+          <Text code>https://api.tradingdays.zldlwq.top/v1</Text>
         </Paragraph>
         <Paragraph>
           <Text strong>Method:</Text> <Tag color="green">GET</Tag>
@@ -49,7 +49,7 @@ const ApiDocs = () => {
         <Paragraph>
           <Text strong>Usage:</Text>{" "}
           <Text code>
-            http://api.tradingdays.zldlwq.top/v1?start=2015-01-01&end=2015-01-02
+            https://api.tradingdays.zldlwq.top/v1?start=2015-01-01&end=2015-01-02
           </Text>
         </Paragraph>
         <Title level={3}>Parameters</Title>
