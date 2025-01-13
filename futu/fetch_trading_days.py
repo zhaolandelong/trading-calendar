@@ -5,8 +5,8 @@ from datetime import datetime, timedelta
 markets = ["HK", "US", "CN", "NT", "ST", "JP_FUTURE", "SG_FUTURE"]
 # markets = ["CN"]
 type_mapping = {"WHOLE": 1, "MORNING": 2, "AFTERNOON": 3}
-start_date = datetime(2015, 1, 1)
-end_date = datetime(2024, 12, 31)
+start_date = datetime(2025, 1, 1)
+end_date = datetime(2025, 12, 31)
 current_date = start_date
 
 # 创建一个空列表来存储日期
@@ -34,7 +34,7 @@ for market in markets:
     market_data_list.append(data_dict)
 
 # print(market_data_list)
-with open("trading_days.csv", mode="w", newline="") as file:
+with open(f"tmp.csv", mode="w", newline="") as file:
     writer = csv.writer(file)
 
     # 写入表头
@@ -50,7 +50,7 @@ with open("trading_days.csv", mode="w", newline="") as file:
             market_data.get(date, -1) for market_data in market_data_list
         ]
 
-with open("trading_days.json", mode="w") as file:
+with open(f"tmp.json", mode="w") as file:
     json.dump(json_data, file)
 
 quote_ctx.close()  # 关闭对象，防止连接条数用尽
